@@ -1,0 +1,1137 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Dormir Bien, Vivir Mejor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --night-deepest:#080B20;
+    --night-deepest-2:#0B0F2A;
+    --night-surface:#131A42;
+    --night-surface-2:#1C2456;
+    --night-surface-3:#242D66;
+    --night-line: rgba(172,182,255,0.16);
+    --night-line-soft: rgba(172,182,255,0.09);
+    --star-white:#F6F4FF;
+    --lavender-dim:#A9AFDB;
+    --lavender-dim-2:#7D84B8;
+    --accent-lavender:#9C8CFF;
+    --accent-lavender-soft: rgba(156,140,255,0.16);
+    --accent-gold:#FFCB77;
+    --accent-gold-soft: rgba(255,203,119,0.16);
+    --accent-teal:#7FE0D6;
+    --shadow-glow: 0 30px 80px -30px rgba(66,50,180,0.55);
+    --radius-lg: 26px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+    --maxw: 1120px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--night-deepest);
+    color:var(--star-white);
+    font-family:'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight:600;
+    line-height:1.12;
+    text-wrap:balance;
+    margin:0;
+    color:var(--star-white);
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-gold);
+    font-weight:500;
+  }
+
+  p{ margin:0; }
+  a{ color:inherit; }
+  button{ font-family:inherit; }
+
+  ::selection{ background:var(--accent-lavender); color:#0B0F2A; }
+
+  :focus-visible{
+    outline:2px solid var(--accent-gold);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- starfield ---------- */
+  #stars{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    width:100%;
+    height:100%;
+  }
+
+  /* ---------- layout shells ---------- */
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{ position:relative; z-index:1; }
+
+  .section-pad{ padding:92px 0 12px; }
+  .section-head{
+    max-width:640px;
+    margin:0 0 44px;
+  }
+  .section-head h2{ font-size:clamp(1.7rem,3.4vw,2.4rem); margin-top:10px; }
+  .section-head .lede{
+    margin-top:14px;
+    color:var(--lavender-dim);
+    font-size:1.02rem;
+    max-width:60ch;
+  }
+
+  hr.divider{
+    border:none;
+    height:1px;
+    margin:88px 0 0;
+    background:linear-gradient(90deg, transparent, var(--night-line) 20%, var(--night-line) 80%, transparent);
+  }
+
+  /* ---------- nav ---------- */
+  header.topnav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background:rgba(8,11,32,0.72);
+    border-bottom:1px solid var(--night-line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:14px 28px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .brand svg{ flex-shrink:0; }
+  nav.links{
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  nav.links::-webkit-scrollbar{ display:none; }
+  nav.links a{
+    text-decoration:none;
+    color:var(--lavender-dim);
+    font-size:0.86rem;
+    font-weight:600;
+    padding:8px 13px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:color .15s ease, background .15s ease;
+  }
+  nav.links a:hover{ color:var(--star-white); background:var(--night-surface-2); }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:14px 26px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:linear-gradient(180deg, #FFDA97, var(--accent-gold));
+    color:#241705;
+    box-shadow:0 16px 36px -14px rgba(255,203,119,0.55);
+  }
+  .btn-primary:hover{ box-shadow:0 20px 42px -12px rgba(255,203,119,0.7); }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--night-line);
+    color:var(--star-white);
+  }
+  .btn-ghost:hover{ background:var(--night-surface-2); border-color:var(--accent-lavender); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:64px 0 30px;
+    display:grid;
+    grid-template-columns:1.08fr 0.92fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{ margin-bottom:16px; display:inline-block; }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.1rem);
+    font-style:italic;
+    font-weight:500;
+  }
+  .hero h1 em{ font-style:normal; color:var(--accent-gold); font-weight:600; }
+  .hero .subtitle{
+    margin-top:20px;
+    font-size:1.14rem;
+    color:var(--lavender-dim);
+    max-width:46ch;
+  }
+  .hero .cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .hero-art{ position:relative; }
+
+  /* ---------- cards & grids ---------- */
+  .grid{
+    display:grid;
+    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+  }
+  .card{
+    background:linear-gradient(180deg, var(--night-surface), var(--night-deepest-2));
+    border:1px solid var(--night-line);
+    border-radius:var(--radius-md);
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{ border-color:var(--accent-lavender); transform:translateY(-3px); }
+  .card .icon{
+    width:42px; height:42px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:12px;
+    background:var(--accent-lavender-soft);
+    color:var(--accent-lavender);
+  }
+  .card h3{ font-size:1.08rem; font-family:'Manrope',sans-serif; font-weight:800; color:var(--star-white); }
+  .card p{ color:var(--lavender-dim); font-size:0.94rem; }
+  .card.gold .icon{ background:var(--accent-gold-soft); color:var(--accent-gold); }
+
+  .callout{
+    margin-top:36px;
+    border-radius:var(--radius-md);
+    padding:28px 30px;
+    background:linear-gradient(120deg, rgba(156,140,255,0.14), rgba(255,203,119,0.10));
+    border:1px solid var(--night-line);
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .callout p{ font-family:'Fraunces', serif; font-size:1.18rem; font-style:italic; color:var(--star-white); line-height:1.5; }
+  .callout .icon{ flex-shrink:0; color:var(--accent-gold); }
+
+  /* ---------- comparison flow (memoria) ---------- */
+  .flow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr auto 1fr;
+    align-items:center;
+    gap:14px;
+    margin-top:8px;
+  }
+  .flow-step{
+    background:var(--night-surface);
+    border:1px solid var(--night-line);
+    border-radius:var(--radius-md);
+    padding:22px 16px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .flow-step .icon{ background:var(--accent-lavender-soft); color:var(--accent-lavender); width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center; }
+  .flow-step strong{ font-size:0.95rem; }
+  .flow-step span{ font-size:0.82rem; color:var(--lavender-dim-2); }
+  .flow-arrow{ color:var(--accent-gold); }
+  @media (max-width:720px){
+    .flow{ grid-template-columns:1fr; }
+    .flow-arrow{ transform:rotate(90deg); justify-self:center; }
+  }
+
+  /* ---------- energy widget ---------- */
+  .energy-widget{
+    background:var(--night-surface);
+    border:1px solid var(--night-line);
+    border-radius:var(--radius-lg);
+    padding:32px;
+    margin-top:8px;
+  }
+  .energy-widget .slider-row{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:26px;
+    flex-wrap:wrap;
+  }
+  .energy-widget label{ font-weight:700; font-size:0.95rem; }
+  .energy-widget output{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    color:var(--accent-gold);
+    background:var(--accent-gold-soft);
+    padding:4px 11px;
+    border-radius:8px;
+    font-size:0.9rem;
+  }
+  input[type=range]{
+    width:100%;
+    -webkit-appearance:none;
+    appearance:none;
+    height:6px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--accent-lavender), var(--accent-gold));
+    outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--star-white);
+    border:4px solid var(--accent-lavender);
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--star-white);
+    border:4px solid var(--accent-lavender);
+    cursor:pointer;
+  }
+  .energy-scale{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .energy-stage{
+    text-align:center;
+    padding:14px 6px;
+    border-radius:var(--radius-sm);
+    border:1px solid var(--night-line);
+    opacity:0.4;
+    transition:opacity .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .energy-stage.active{
+    opacity:1;
+    border-color:var(--accent-gold);
+    background:var(--accent-gold-soft);
+  }
+  .energy-stage svg{ margin:0 auto 8px; display:block; }
+  .energy-stage span{ font-size:0.72rem; color:var(--lavender-dim); font-weight:600; display:block; }
+  .energy-tip{
+    margin-top:20px;
+    font-size:0.92rem;
+    color:var(--lavender-dim);
+    border-top:1px solid var(--night-line-soft);
+    padding-top:18px;
+  }
+  .energy-tip strong{ color:var(--star-white); }
+
+  /* ---------- mood strip ---------- */
+  .mood-strip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:8px;
+  }
+  .mood-path{
+    border-radius:var(--radius-md);
+    border:1px solid var(--night-line);
+    padding:26px;
+    background:var(--night-surface);
+  }
+  .mood-path.bad{ border-color:rgba(255,140,140,0.25); }
+  .mood-path.good{ border-color:rgba(127,224,214,0.3); }
+  .mood-path .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:6px;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+  .mood-path.bad .tag{ background:rgba(255,140,140,0.15); color:#FFB3B3; }
+  .mood-path.good .tag{ background:rgba(127,224,214,0.15); color:var(--accent-teal); }
+  .mood-path ul{ margin:14px 0 0; padding-left:18px; color:var(--lavender-dim); font-size:0.92rem; display:flex; flex-direction:column; gap:6px; }
+  @media (max-width:720px){ .mood-strip{ grid-template-columns:1fr; } }
+
+  /* ---------- quiz ---------- */
+  .quiz-shell{
+    background:linear-gradient(180deg, var(--night-surface), var(--night-deepest-2));
+    border:1px solid var(--night-line);
+    border-radius:var(--radius-lg);
+    padding:40px;
+    box-shadow:var(--shadow-glow);
+  }
+  .quiz-top{ display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:26px; flex-wrap:wrap; }
+  .quiz-dots{ display:flex; gap:6px; flex-wrap:wrap; }
+  .quiz-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--night-surface-3);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .quiz-dot.done{ background:var(--accent-lavender); }
+  .quiz-dot.current{ background:var(--accent-gold); transform:scale(1.3); }
+  .quiz-counter{ font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--lavender-dim); }
+
+  .quiz-question h3{
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.25rem, 2.4vw, 1.6rem);
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  .quiz-options{ display:flex; flex-direction:column; gap:10px; }
+  .quiz-option{
+    text-align:left;
+    background:var(--night-deepest-2);
+    border:1px solid var(--night-line);
+    color:var(--star-white);
+    padding:14px 18px;
+    border-radius:var(--radius-sm);
+    font-size:0.96rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .quiz-option .bullet{
+    width:16px;height:16px;border-radius:50%;
+    border:2px solid var(--lavender-dim-2);
+    flex-shrink:0;
+    position:relative;
+  }
+  .quiz-option.selected{ border-color:var(--accent-gold); background:var(--accent-gold-soft); }
+  .quiz-option.selected .bullet{ border-color:var(--accent-gold); background:var(--accent-gold); }
+  .quiz-option:hover{ border-color:var(--accent-lavender); }
+
+  .quiz-nav{ display:flex; justify-content:space-between; margin-top:30px; gap:12px; }
+  .quiz-nav button:disabled{ opacity:0.35; cursor:not-allowed; }
+  .quiz-nav button:disabled:hover{ transform:none; }
+
+  .quiz-result{ text-align:center; }
+  .quiz-result .moon-big{ margin:0 auto 18px; }
+  .quiz-result .score{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.95rem;
+    color:var(--accent-gold);
+    margin-bottom:6px;
+  }
+  .quiz-result h3{ font-size:clamp(1.5rem,3vw,2rem); margin-bottom:14px; }
+  .quiz-result p.desc{ color:var(--lavender-dim); max-width:52ch; margin:0 auto; }
+  .quiz-result .tips{
+    text-align:left;
+    margin:28px auto 0;
+    max-width:520px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .quiz-result .tips li{ color:var(--lavender-dim); font-size:0.92rem; }
+  .quiz-result .btn{ margin-top:30px; }
+
+  [hidden]{ display:none !important; }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:100px;
+    border-top:1px solid var(--night-line-soft);
+    padding:36px 0 48px;
+  }
+  footer .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  footer p{ color:var(--lavender-dim-2); font-size:0.85rem; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; padding-top:36px; }
+    .hero-art{ order:-1; max-width:360px; margin:0 auto; }
+    .section-pad{ padding:64px 0 12px; }
+    .quiz-shell{ padding:26px; }
+  }
+  @media (max-width:520px){
+    .nav-inner{ padding:12px 18px; gap:16px; }
+    .wrap{ padding:0 18px; }
+    .callout{ flex-direction:column; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+
+<canvas id="stars"></canvas>
+
+<header class="topnav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="#FFCB77"/></svg>
+      Dormir Bien
+    </div>
+    <nav class="links">
+      <a href="#inicio">Inicio</a>
+      <a href="#por-que">Por qué dormir</a>
+      <a href="#concentracion">Concentración</a>
+      <a href="#memoria">Memoria</a>
+      <a href="#energia">Energía</a>
+      <a href="#rendimiento">Rendimiento</a>
+      <a href="#animo">Ánimo</a>
+      <a href="#fisico">Cuerpo</a>
+      <a href="#test">Test</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Guía de sueño para estudiantes</span>
+      <h1>Dormir bien,<br><em>vivir mejor</em></h1>
+      <p class="subtitle">Descubre cómo el sueño influye en tu mente, tu cuerpo y tu rendimiento — explicado sin tecnicismos, con datos que puedes aplicar hoy mismo.</p>
+      <div class="cta-row">
+        <a href="#test" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          Haz el test de sueño
+        </a>
+        <a href="#por-que" class="btn btn-ghost">¿Por qué es importante dormir?</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 420 380" width="100%">
+        <defs>
+          <linearGradient id="windowGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2A3378"/>
+            <stop offset="1" stop-color="#141A46"/>
+          </linearGradient>
+          <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#FFE9BE"/>
+            <stop offset="1" stop-color="#FFCB77"/>
+          </radialGradient>
+        </defs>
+        <rect x="40" y="20" width="340" height="300" rx="26" fill="url(#windowGlow)" stroke="#39428F" stroke-width="2"/>
+        <circle cx="290" cy="95" r="38" fill="url(#moonGlow)"/>
+        <circle cx="278" cy="82" r="38" fill="url(#windowGlow)" opacity="0.92"/>
+        <g fill="#F6F4FF">
+          <circle cx="110" cy="60" r="2.4"/>
+          <circle cx="150" cy="105" r="1.8"/>
+          <circle cx="90" cy="140" r="2"/>
+          <circle cx="200" cy="55" r="1.6"/>
+          <circle cx="330" cy="180" r="2"/>
+          <circle cx="70" cy="90" r="1.6"/>
+        </g>
+        <path d="M40 300 Q40 260 90 258 Q100 230 140 238 Q160 218 195 232 Q220 218 250 235 Q270 222 300 238 Q330 232 345 258 Q380 262 380 300Z" fill="#0E1338"/>
+        <rect x="60" y="290" width="300" height="70" rx="18" fill="#171E4C" stroke="#39428F" stroke-width="2"/>
+        <path d="M75 295 Q210 275 345 295 L345 305 Q210 288 75 305Z" fill="#232B66"/>
+        <ellipse cx="150" cy="284" rx="34" ry="16" fill="#F6F4FF" opacity="0.94"/>
+        <path d="M150 280 q40 -34 96 -10 q26 40 -4 70 q-70 20 -110 -18 q-8 -26 18 -42Z" fill="#2A3378" stroke="#454E9E" stroke-width="2"/>
+        <text x="240" y="320" font-family="JetBrains Mono, monospace" font-size="15" fill="#FFCB77" font-weight="600">Z z z</text>
+      </svg>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- POR QUE DORMIR -->
+  <section id="por-que" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Fundamentos</span>
+      <h2>¿Por qué necesitamos dormir?</h2>
+      <p class="lede">El sueño no es un "apagado" del cuerpo: es un proceso activo en el que el cerebro y el organismo hacen mantenimiento, reparación y organización — tareas que no pueden hacerse mientras estás despierto.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v16M18 4v16M6 8h4a2 2 0 0 1 2 2v10M18 8h-4a2 2 0 0 0-2 2"/></svg></div>
+        <h3>Recuperación física</h3>
+        <p>Los tejidos y músculos se reparan y el cuerpo repone energía para el día siguiente.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3a5 5 0 0 0-5 5c0 1.5.6 2.3 1 3-1 .6-1.5 1.6-1.5 3a4 4 0 0 0 4 4h.5M15 3a5 5 0 0 1 5 5c0 1.5-.6 2.3-1 3 1 .6 1.5 1.6 1.5 3a4 4 0 0 1-4 4h-.5M9 3v15M15 3v15"/></svg></div>
+        <h3>Funcionamiento del cerebro</h3>
+        <p>Durante el sueño el cerebro reorganiza información y "limpia" residuos acumulados durante el día.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Regulación del organismo</h3>
+        <p>Hormonas, temperatura corporal y otros procesos internos se ajustan mientras duermes.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10M7 12h6"/></svg></div>
+        <h3>Consolidación de recuerdos</h3>
+        <p>Lo aprendido durante el día se archiva y refuerza en la memoria de largo plazo.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+        <h3>Recuperación de energía</h3>
+        <p>Las reservas de energía que usaste durante el día se restauran para el siguiente.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 8.6c0 4.4-8.8 10.4-8.8 10.4S3.2 13 3.2 8.6a4.6 4.6 0 0 1 8.8-1.9 4.6 4.6 0 0 1 8.8 1.9Z"/></svg></div>
+        <h3>Regulación emocional</h3>
+        <p>El sueño ayuda a procesar emociones del día y a afrontar el siguiente con más calma.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      <p>Dormir no es perder tiempo: es darle al cuerpo y al cerebro la oportunidad de recuperarse y funcionar correctamente.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONCENTRACION -->
+  <section id="concentracion" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Mente despierta</span>
+      <h2>Sueño, concentración y atención</h2>
+      <p class="lede">Cuántas horas y qué tan bien duermes se relaciona directamente con tu capacidad para prestar atención en clase.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card gold">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg></div>
+        <h3>Capacidad para concentrarte</h3>
+        <p>Con buen descanso es más fácil sostener la atención en una tarea durante más tiempo.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Atención en clase</h3>
+        <p>Un cerebro descansado procesa lo que explica el profesor con menos esfuerzo.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Más distracción con falta de sueño</h3>
+        <p>La mente cansada salta de una idea a otra y cuesta más volver a enfocarse.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Tiempo de reacción</h3>
+        <p>Dormir bien mejora la rapidez con la que respondes a lo que pasa a tu alrededor.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- MEMORIA -->
+  <section id="memoria" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Aprender mejor</span>
+      <h2>Sueño, memoria y aprendizaje</h2>
+      <p class="lede">Dormir es parte del proceso de estudiar, no una pausa en él: es cuando el cerebro ordena y guarda lo que aprendiste.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10M7 12h6"/></svg></div>
+        <h3>Consolidación de la memoria</h3>
+        <p>Durante el sueño, el cerebro traslada lo aprendido a la memoria de largo plazo.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg></div>
+        <h3>Dormir después de estudiar</h3>
+        <p>Ayuda a que la información se procese y quede mejor fijada, en vez de perderse.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3a5 5 0 0 0-5 5c0 1.5.6 2.3 1 3-1 .6-1.5 1.6-1.5 3a4 4 0 0 0 4 4h.5M15 3a5 5 0 0 1 5 5c0 1.5-.6 2.3-1 3 1 .6 1.5 1.6 1.5 3a4 4 0 0 1-4 4h-.5M9 3v15M15 3v15"/></svg></div>
+        <h3>Resolución de problemas</h3>
+        <p>Un cerebro descansado conecta ideas y encuentra soluciones con más facilidad.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Falta de sueño = más olvido</h3>
+        <p>Dormir poco dificulta tanto recordar lo ya aprendido como fijar información nueva.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:52px; margin-bottom:20px;">
+      <h3 style="font-family:'Fraunces',serif; font-size:1.2rem;">De estudiar a aprender de verdad</h3>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10M7 12h6"/></svg></div>
+        <strong>Estudiar</strong>
+        <span>Aprendes algo nuevo</span>
+      </div>
+      <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg></div>
+        <strong>Descansar</strong>
+        <span>El cerebro consolida</span>
+      </div>
+      <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="flow-step">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></div>
+        <strong>Aprendizaje real</strong>
+        <span>Listo para usar lo aprendido</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ENERGIA -->
+  <section id="energia" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Combustible diario</span>
+      <h2>Energía y cansancio</h2>
+      <p class="lede">Dormir lo suficiente se relaciona con cómo te sientes al despertar y con la energía que tienes durante todo el día.</p>
+    </div>
+
+    <div class="grid" style="margin-bottom:32px;">
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Sensación de cansancio</h3><p>Dormir poco se nota en el cuerpo, aunque intentes ignorarlo.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Somnolencia diurna</h3><p>Ese "bajón" a media tarde suele estar relacionado con el descanso de la noche anterior.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg></div><h3>Mantenerte despierto/a</h3><p>Cuesta más seguir enfocado/a en clases largas o actividades tranquilas.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></div><h3>Motivación</h3><p>Con energía, es más fácil tener ganas de hacer las cosas que planeaste.</p></div>
+    </div>
+
+    <div class="energy-widget">
+      <div class="slider-row">
+        <label for="hoursSlider">¿Cuántas horas dormiste anoche?</label>
+        <output id="hoursOut">7 h</output>
+      </div>
+      <input type="range" id="hoursSlider" min="4" max="10" step="0.5" value="7">
+      <div class="energy-scale" style="margin-top:26px;">
+        <div class="energy-stage" data-stage="0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lavender-dim)"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+          <span>Muy cansado/a</span>
+        </div>
+        <div class="energy-stage" data-stage="1">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lavender-dim)"><path d="M19 14A7 7 0 1 1 10.2 5a5.6 5.6 0 0 0 8.8 9Z"/></svg>
+          <span>Cansado/a</span>
+        </div>
+        <div class="energy-stage" data-stage="2">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lavender-dim)"><path d="M12 3a9 9 0 1 0 7.8 4.5A5.5 5.5 0 0 1 12 3Z"/></svg>
+          <span>Normal</span>
+        </div>
+        <div class="energy-stage" data-stage="3">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lavender-dim)"><path d="M12 3a9 9 0 1 0 3.5 17.3A5.5 5.5 0 0 1 12 3Z"/></svg>
+          <span>Con energía</span>
+        </div>
+        <div class="energy-stage" data-stage="4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--lavender-dim)"><circle cx="12" cy="12" r="9"/></svg>
+          <span>Muy descansado/a</span>
+        </div>
+      </div>
+      <p class="energy-tip" id="energyTip"><strong>Normal —</strong> con 7 horas la mayoría de estudiantes rinde de forma estable durante el día.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- RENDIMIENTO ESCOLAR -->
+  <section id="rendimiento" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">En el salón de clase</span>
+      <h2>Rendimiento escolar</h2>
+      <p class="lede">El descanso se relaciona con varias habilidades que usas todos los días en el colegio. Dormir mejor no garantiza automáticamente mejores notas, pero sí te da mejores herramientas para lograrlas.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg></div><h3>Atención en clase</h3><p>Más facilidad para seguir explicaciones de principio a fin.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M8 16h5M6 3h9l4 4v14H6z"/></svg></div><h3>Participación</h3><p>Con energía es más natural levantar la mano y sumarte a la clase.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10M7 12h6"/></svg></div><h3>Capacidad de estudiar</h3><p>Facilita entender y retener el material mientras repasas.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></div><h3>Tareas</h3><p>Menos procrastinación cuando no estás luchando contra el sueño.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3a5 5 0 0 0-5 5c0 1.5.6 2.3 1 3-1 .6-1.5 1.6-1.5 3a4 4 0 0 0 4 4h.5M15 3a5 5 0 0 1 5 5c0 1.5-.6 2.3-1 3 1 .6 1.5 1.6 1.5 3a4 4 0 0 1-4 4h-.5M9 3v15M15 3v15"/></svg></div><h3>Memoria y aprendizaje</h3><p>Ayuda a que lo estudiado se quede y sea más fácil de recuperar en un examen.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><h3>Organización</h3><p>Más claridad mental para planear tiempos y resolver problemas paso a paso.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ANIMO -->
+  <section id="animo" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Cómo te sientes</span>
+      <h2>Estado de ánimo</h2>
+      <p class="lede">El sueño y las emociones están conectados en ambas direcciones: dormir mal puede afectar tu humor, y el estrés puede afectar tu sueño.</p>
+    </div>
+
+    <div class="grid" style="margin-bottom:10px;">
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div><h3>Irritabilidad</h3><p>Con poco sueño, las cosas pequeñas molestan más de lo normal.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Paciencia</h3><p>Descansar ayuda a responder con más calma ante situaciones difíciles.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg></div><h3>Estrés</h3><p>Un buen descanso hace más manejables las presiones del día a día.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Motivación</h3><p>Con energía disponible, los planes del día se sienten más alcanzables.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3a5 5 0 0 0-5 5c0 1.5.6 2.3 1 3-1 .6-1.5 1.6-1.5 3a4 4 0 0 0 4 4h.5M15 3a5 5 0 0 1 5 5c0 1.5-.6 2.3-1 3 1 .6 1.5 1.6 1.5 3a4 4 0 0 1-4 4h-.5M9 3v15M15 3v15"/></svg></div><h3>Regulación emocional</h3><p>Facilita reconocer y manejar lo que sientes en vez de reaccionar de golpe.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></div><h3>Bienestar</h3><p>Despertar descansado/a cambia por completo cómo arrancas el día.</p></div>
+    </div>
+
+    <div class="mood-strip" style="margin-top:28px;">
+      <div class="mood-path bad">
+        <span class="tag">Noche corta</span>
+        <p>El día puede sentirse más pesado antes de empezar:</p>
+        <ul><li>Más irritabilidad ante cualquier imprevisto</li><li>Menos paciencia con compañeros/as</li><li>El estrés se siente más grande de lo que es</li></ul>
+      </div>
+      <div class="mood-path good">
+        <span class="tag">Buen descanso</span>
+        <p>El mismo día, con otra energía:</p>
+        <ul><li>Más tolerancia ante contratiempos</li><li>Mejor manejo de emociones difíciles</li><li>Sensación general de bienestar</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FISICO -->
+  <section id="fisico" class="section-pad">
+    <div class="section-head">
+      <span class="eyebrow">Cuerpo en movimiento</span>
+      <h2>Rendimiento físico</h2>
+      <p class="lede">El descanso no solo es para la mente: también se relaciona con cómo responde tu cuerpo, dentro y fuera de la cancha.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-4 8M12 13l4 8M8 11l-3 2M16 11l3 2"/></svg></div><h3>Coordinación</h3><p>Un cuerpo descansado responde con más precisión a lo que le pides.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Tiempo de reacción</h3><p>Reaccionas más rápido a un balón, una señal o un movimiento inesperado.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 8.6c0 4.4-8.8 10.4-8.8 10.4S3.2 13 3.2 8.6a4.6 4.6 0 0 1 8.8-1.9 4.6 4.6 0 0 1 8.8 1.9Z"/></svg></div><h3>Recuperación</h3><p>Dormir es clave para reparar músculos después de hacer actividad física.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Energía para entrenar</h3><p>Con buen descanso llegas a la práctica con más combustible disponible.</p></div>
+      <div class="card"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div><h3>Mantener el esfuerzo</h3><p>Aguantas mejor el ritmo durante toda la actividad, sin caer tan rápido.</p></div>
+      <div class="card gold"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 13 4 4L19 7"/></svg></div><h3>Clave para deportistas</h3><p>Si entrenas seguido, el sueño es tan parte del entrenamiento como la práctica misma.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- TEST -->
+  <section id="test" class="section-pad" style="padding-bottom:100px;">
+    <div class="section-head">
+      <span class="eyebrow">Ponte a prueba</span>
+      <h2>¿Cómo están tus hábitos de sueño?</h2>
+      <p class="lede">Responde estas 10 preguntas con sinceridad. Al final verás una fase lunar que resume tu situación, con algunas ideas para mejorar.</p>
+    </div>
+
+    <div class="quiz-shell">
+      <div id="quizQuestionView">
+        <div class="quiz-top">
+          <div class="quiz-dots" id="quizDots"></div>
+          <span class="quiz-counter" id="quizCounter">Pregunta 1 / 10</span>
+        </div>
+        <div class="quiz-question">
+          <h3 id="quizQuestionText"></h3>
+          <div class="quiz-options" id="quizOptions"></div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn btn-ghost" id="quizBack">Atrás</button>
+          <button class="btn btn-primary" id="quizNext" disabled>Siguiente</button>
+        </div>
+      </div>
+
+      <div id="quizResultView" hidden>
+        <div class="quiz-result">
+          <svg class="moon-big" id="resultMoon" width="72" height="72" viewBox="0 0 24 24"></svg>
+          <p class="score" id="resultScore"></p>
+          <h3 id="resultTitle"></h3>
+          <p class="desc" id="resultDesc"></p>
+          <ul class="tips" id="resultTips"></ul>
+          <button class="btn btn-ghost" id="quizRestart">Repetir el test</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="brand">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="#FFCB77"/></svg>
+        Dormir Bien, Vivir Mejor
+      </div>
+      <p>Material educativo para estudiantes. Consulta a un profesional de salud ante problemas de sueño persistentes.</p>
+    </div>
+  </footer>
+</main>
+
+<script>
+// ---------------- starfield ----------------
+(function(){
+  var canvas = document.getElementById('stars');
+  var ctx = canvas.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stars = [];
+  var w, h;
+
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.documentElement.scrollHeight;
+    var count = Math.floor((w*h)/9000);
+    stars = [];
+    for(var i=0;i<count;i++){
+      stars.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*1.3 + 0.3,
+        phase: Math.random()*Math.PI*2,
+        speed: 0.4 + Math.random()*0.8
+      });
+    }
+  }
+
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    for(var i=0;i<stars.length;i++){
+      var s = stars[i];
+      var a = reduced ? 0.55 : 0.35 + 0.5*Math.abs(Math.sin(s.phase + t*0.0006*s.speed));
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(246,244,255,' + a.toFixed(2) + ')';
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    if(!reduced) requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  if(reduced){ draw(0); } else { requestAnimationFrame(draw); }
+})();
+
+// ---------------- energy widget ----------------
+(function(){
+  var slider = document.getElementById('hoursSlider');
+  var out = document.getElementById('hoursOut');
+  var stages = document.querySelectorAll('.energy-stage');
+  var tip = document.getElementById('energyTip');
+
+  var tips = [
+    '<strong>Muy cansado/a —</strong> con tan pocas horas, el cuerpo y la mente funcionan en modo ahorro de energía todo el día.',
+    '<strong>Cansado/a —</strong> es probable que sientas bajones de atención, sobre todo en la tarde.',
+    '<strong>Normal —</strong> con esta cantidad la mayoría de estudiantes rinde de forma estable durante el día.',
+    '<strong>Con energía —</strong> buen punto para sostener el enfoque en clases y actividades.',
+    '<strong>Muy descansado/a —</strong> el cuerpo y el cerebro llegan al día con todo el combustible disponible.'
+  ];
+
+  function stageFor(hours){
+    if(hours < 5) return 0;
+    if(hours < 6.5) return 1;
+    if(hours < 7.5) return 2;
+    if(hours < 8.5) return 3;
+    return 4;
+  }
+
+  function update(){
+    var hours = parseFloat(slider.value);
+    out.textContent = hours.toFixed(1).replace('.0','') + ' h';
+    var stage = stageFor(hours);
+    stages.forEach(function(el){
+      el.classList.toggle('active', parseInt(el.dataset.stage,10) === stage);
+    });
+    tip.innerHTML = tips[stage];
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+
+// ---------------- quiz ----------------
+(function(){
+  var questions = [
+    { q: '¿Cuántas horas duermes normalmente durante la noche?', options: [
+      {label:'Menos de 5 horas', pts:0}, {label:'5–6 horas', pts:1}, {label:'7–8 horas', pts:3}, {label:'Más de 8 horas', pts:2}
+    ]},
+    { q: '¿Te cuesta quedarte dormido/a?', options: [
+      {label:'Nunca', pts:3}, {label:'Algunas veces', pts:2}, {label:'Frecuentemente', pts:1}, {label:'Casi siempre', pts:0}
+    ]},
+    { q: '¿Te despiertas descansado/a?', options: [
+      {label:'Siempre', pts:3}, {label:'Casi siempre', pts:2}, {label:'Algunas veces', pts:1}, {label:'Casi nunca', pts:0}
+    ]},
+    { q: '¿Tienes sueño o cansancio durante las clases?', options: [
+      {label:'Nunca', pts:3}, {label:'Algunas veces', pts:2}, {label:'Frecuentemente', pts:1}, {label:'Siempre', pts:0}
+    ]},
+    { q: '¿Utilizas el celular justo antes de dormir?', options: [
+      {label:'Nunca', pts:3}, {label:'Algunas veces', pts:2}, {label:'Frecuentemente', pts:1}, {label:'Siempre', pts:0}
+    ]},
+    { q: '¿Mantienes horarios similares para acostarte y levantarte?', options: [
+      {label:'Sí, casi siempre', pts:3}, {label:'Algunas veces', pts:1.5}, {label:'Rara vez', pts:0}
+    ]},
+    { q: '¿Tomas café, té o bebidas energéticas por la tarde o noche?', options: [
+      {label:'Nunca', pts:3}, {label:'Rara vez', pts:2}, {label:'Frecuentemente', pts:1}, {label:'Todos los días', pts:0}
+    ]},
+    { q: '¿Duermes siesta durante el día?', options: [
+      {label:'No la necesito', pts:3}, {label:'Siesta corta (20–30 min)', pts:2}, {label:'Siesta larga (+1 hora)', pts:1}, {label:'Me quedo dormido/a sin querer', pts:0}
+    ]},
+    { q: 'Los fines de semana, ¿duermes muchas más horas para "recuperar" sueño?', options: [
+      {label:'No, duermo similar', pts:3}, {label:'Un poco más', pts:2}, {label:'Bastante más', pts:1}, {label:'Muchísimo más', pts:0}
+    ]},
+    { q: '¿Sientes que la falta de sueño afecta tu ánimo o tu rendimiento escolar?', options: [
+      {label:'Nunca', pts:3}, {label:'Rara vez', pts:2}, {label:'A veces', pts:1}, {label:'Sí, con frecuencia', pts:0}
+    ]}
+  ];
+
+  var maxScore = questions.reduce(function(sum,q){
+    return sum + Math.max.apply(null, q.options.map(function(o){return o.pts;}));
+  }, 0);
+
+  var current = 0;
+  var answers = new Array(questions.length).fill(null);
+
+  var dotsEl = document.getElementById('quizDots');
+  var counterEl = document.getElementById('quizCounter');
+  var qTextEl = document.getElementById('quizQuestionText');
+  var optionsEl = document.getElementById('quizOptions');
+  var backBtn = document.getElementById('quizBack');
+  var nextBtn = document.getElementById('quizNext');
+  var questionView = document.getElementById('quizQuestionView');
+  var resultView = document.getElementById('quizResultView');
+
+  function renderDots(){
+    dotsEl.innerHTML = '';
+    questions.forEach(function(_, i){
+      var d = document.createElement('span');
+      d.className = 'quiz-dot' + (answers[i] !== null ? ' done' : '') + (i === current ? ' current' : '');
+      dotsEl.appendChild(d);
+    });
+  }
+
+  function renderQuestion(){
+    var q = questions[current];
+    counterEl.textContent = 'Pregunta ' + (current+1) + ' / ' + questions.length;
+    qTextEl.textContent = q.q;
+    optionsEl.innerHTML = '';
+    q.options.forEach(function(opt, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'quiz-option' + (answers[current] === i ? ' selected' : '');
+      b.innerHTML = '<span class="bullet"></span>' + opt.label;
+      b.addEventListener('click', function(){
+        answers[current] = i;
+        renderQuestion();
+        renderDots();
+      });
+      optionsEl.appendChild(b);
+    });
+    backBtn.disabled = current === 0;
+    nextBtn.disabled = answers[current] === null;
+    nextBtn.textContent = current === questions.length - 1 ? 'Ver resultado' : 'Siguiente';
+    renderDots();
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(current > 0){ current--; renderQuestion(); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(answers[current] === null) return;
+    if(current < questions.length - 1){
+      current++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  });
+
+  function moonPath(pct){
+    // simple 4-state moon silhouette based on percentage
+    if(pct >= 85) return {d:'<circle cx="12" cy="12" r="9" fill="var(--accent-gold)"/>', label:'Luna llena'};
+    if(pct >= 60) return {d:'<path d="M19 14A7 7 0 1 1 10.2 5a5.6 5.6 0 0 0 8.8 9Z" fill="var(--accent-gold)"/>', label:'Luna creciente'};
+    if(pct >= 35) return {d:'<path d="M15 4.5A8.5 8.5 0 1 0 15 19.5 10.5 10.5 0 0 1 15 4.5Z" fill="var(--accent-gold)"/>', label:'Luna menguante'};
+    return {d:'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="var(--accent-gold)"/>', label:'Luna nueva'};
+  }
+
+  function showResult(){
+    var totalPts = answers.reduce(function(sum, ansIndex, i){
+      if(ansIndex === null) return sum;
+      return sum + questions[i].options[ansIndex].pts;
+    }, 0);
+    var pct = Math.round((totalPts / maxScore) * 100);
+
+    var bucket;
+    if(pct >= 85){
+      bucket = {
+        title:'Sueño de campeón/a',
+        desc:'Tus hábitos de sueño son sólidos. Esto ayuda a que tu mente y tu cuerpo rindan de forma constante — sigue así.',
+        tips:['Mantén horarios estables incluso los fines de semana.', 'Sigue evitando pantallas justo antes de dormir.', 'Comparte tus buenos hábitos, ¡suelen ser contagiosos!']
+      };
+    } else if(pct >= 60){
+      bucket = {
+        title:'Vas por buen camino',
+        desc:'Tus hábitos son razonables, pero hay uno o dos puntos que, si ajustas, pueden marcar una diferencia notable.',
+        tips:['Revisa a qué hora usas el celular antes de dormir.', 'Intenta acostarte a la misma hora todos los días.', 'Evita cafeína después de media tarde.']
+      };
+    } else if(pct >= 35){
+      bucket = {
+        title:'Tu sueño necesita un ajuste',
+        desc:'Varios hábitos podrían estar afectando tu descanso — y probablemente ya lo notas en tu energía o tu ánimo.',
+        tips:['Define una hora fija para dormir y despertar.', 'Reduce el uso de pantallas 30–60 min antes de acostarte.', 'Evita siestas largas que compliquen dormir en la noche.']
+      };
+    } else {
+      bucket = {
+        title:'Alerta de sueño',
+        desc:'Tus respuestas muestran varias señales de descanso insuficiente. Vale la pena hacer cambios pronto y, si persiste, hablarlo con un adulto de confianza.',
+        tips:['Empieza por adelantar tu hora de dormir 20–30 min cada noche.', 'Aleja el celular de la cama durante la noche.', 'Si el cansancio persiste, coméntalo con tu familia o un profesional de salud.']
+      };
+    }
+
+    var moon = moonPath(pct);
+    document.getElementById('resultMoon').innerHTML = moon.d;
+    document.getElementById('resultScore').textContent = moon.label + ' · ' + pct + '%';
+    document.getElementById('resultTitle').textContent = bucket.title;
+    document.getElementById('resultDesc').textContent = bucket.desc;
+    var tipsEl = document.getElementById('resultTips');
+    tipsEl.innerHTML = '';
+    bucket.tips.forEach(function(t){
+      var li = document.createElement('li');
+      li.textContent = t;
+      tipsEl.appendChild(li);
+    });
+
+    questionView.hidden = true;
+    resultView.hidden = false;
+  }
+
+  document.getElementById('quizRestart').addEventListener('click', function(){
+    current = 0;
+    answers = new Array(questions.length).fill(null);
+    questionView.hidden = false;
+    resultView.hidden = true;
+    renderQuestion();
+  });
+
+  renderQuestion();
+})();
+</script>
+
+</body></html>
